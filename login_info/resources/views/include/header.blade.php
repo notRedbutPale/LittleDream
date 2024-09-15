@@ -20,7 +20,7 @@
           </li>
         </ul>
         <span class="navbar-text">
-          Navbar text with an inline element
+          Text to be add
         </span>
       </div>
     </div>

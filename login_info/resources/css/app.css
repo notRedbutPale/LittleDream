@@ -1,0 +1,39 @@
+/* app.css */
+
+/* Set the overall background color */
+body {
+    background-color: #f0f8ff; /* Light blue background */
+    font-family: Arial, sans-serif; /* Change the text font */
+    color: #333; /* Default text color */
+}
+
+/* Style for headings */
+h2 {
+    color: #4a4a4a; /* Darker shade for headings */
+    font-weight: bold; /* Make headings bold */
+}
+
+/* Style for the form labels */
+label {
+    color: #555; /* Dark grey for form labels */
+    font-weight: 600; /* Slightly bold labels */
+}
+
+/* Style for input fields */
+.form-control {
+    border: 1px solid #ddd; /* Light border */
+    box-shadow: none; /* Remove default shadows */
+    padding: 10px; /* Add padding */
+}
+
+/* Button styling */
+.btn-success {
+    background-color: #28a745; /* Standard Bootstrap green */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Increase padding */
+    font-weight: bold; /* Bold text */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Slightly darker green on hover */
+}

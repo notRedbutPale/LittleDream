@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ForgetPasswordManager;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,8 +26,10 @@ Route::get('/logpage', function () {
     return view('logpage');
 })->name('logpage');
 
-// Route to the edit page (replace with actual edit route and controller method)
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-
-// Route to delete the user
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.delete');
+
+Route::get('/story', [StoryController::class, 'index'])->name('story');
+Route::get('/story/{id}', [StoryController::class, 'show'])->name('story.show');
+
