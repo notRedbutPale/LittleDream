@@ -21,12 +21,12 @@ class AuthManager extends Controller
     }
     public function loginPost(Request $request){
       $request->validate([
-         'email' =>'required',
-         'password' =>'required'
+         'email' =>'required|email',
+         'password' =>'required|min:5'
       ]);
       $credentials=$request->only('email', 'password');
       if(Auth::attempt($credentials)){
-         return redirect()->intended(route('logpage'));
+         return redirect()->intended(route('profile'));
       
       }
       return redirect(route('login'))->with("error","Login details are invalid");
@@ -35,14 +35,21 @@ class AuthManager extends Controller
     public function registerPost(Request $request){
       #dd($request->all());
       $request->validate([
-         'name'=>'required',
-        'email' => 'required|email|unique:users',
-
-
-         'password' =>'required'
+         'username'=>'required',
+         'email' => 'required|email|unique:users',
+         'password' => [
+            'required',
+            'min:5',
+            'regex:/[!@#$%^&*(),.?":{}|<>]/'
+         ],
+      ], [
+         'email.unique' => 'SORRY THIS EMAIL IS ALREADY IN USE', // Custom error message
+         'password.min' => 'Password must be at least 5 characters long', // Custom password length error message
+         'password.regex' => 'Password must include at least one special character' // Custom error for special character
       ]);
 
-      $data['name']= $request->name;
+
+      $data['name']= $request->username;
       $data['email']= $request->email;
       $data['password'] = Hash::make($request->password); 
       $user=User::create($data);
@@ -60,7 +67,7 @@ class AuthManager extends Controller
         Auth::logout();
     
         // Redirect to login page with a success message
-        return redirect()->route('login')
+        return redirect()->route('homepage')
                          ->with('success', 'You have been logged out.');
     }
     

@@ -1,0 +1,136 @@
+/* Navbar Styling */
+.custom-navbar {
+    background-color: rgb(10, 117, 91) !important; /* Or any color you want */
+    padding: 1rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000; /* Change text color to black */
+}
+
+.navbar-brand:hover {
+    color: #333333; /* Slightly darker hover color */
+}
+
+.navbar-toggler {
+    border: none;
+    color: #000000; /* Black color for the toggle button */
+}
+
+.navbar-toggler-icon {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/list.svg');
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #000000; /* Set nav link text color to black */
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #333333; /* Darker hover color */
+}
+
+.navbar-nav .nav-item .active {
+    font-weight: bold;
+    color: #ffcc00 !important; /* Keep the active link yellow */
+}
+
+.navbar-text {
+    font-size: 1rem;
+    color: #000000; /* Set text color to black for the navbar text */
+}
+
+.navbar-text a {
+    color: #ffcc00; /* Keep the link color yellow */
+    text-decoration: none;
+}
+
+.navbar-text a:hover {
+    color: #ffc107; /* Lighter hover effect for links */
+}
+
+.fa-comment-dots, .fa-paw {
+    margin-right: 5px;
+    color: #ffcc00; /* Icon color */
+}
+
+
+body {
+    background-color:  rgb(74, 138, 121); /* Change this to any color you want */
+    color: #c70c0c; /* Text color, adjust as needed */
+    font-family: Arial, sans-serif; /* You can change the font as well */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #525e69;
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Important for positioning the image */
+}
+
+.search-box {
+    background-color: rgb(161, 228, 148);
+    padding: 70px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px; /* Limits the width of the search box */
+    height: 300px; /* Fixed height for the container */
+}
+
+.search-box h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #343a40;
+}
+
+.search-box .form-control {
+    border-radius: 50px;
+    padding: 15px 20px;
+}
+
+.search-box .btn {
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+/* Bun image styling */
+.bun-image {
+    position: absolute;
+    top: -100px; /* Moves the image above the search box */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    z-index: 3; /* Ensures it is above the search box */
+}
+
+/* Add responsiveness for mobile */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 1rem;
+    }
+
+    .navbar-text {
+        margin-top: 1rem;
+    }
+}

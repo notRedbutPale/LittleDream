@@ -1,0 +1,117 @@
+
+body {
+    background-color: rgb(74, 138, 121); /* Softer black for a more modern look */
+    color: #e0e0e0; /* Softer white to reduce eye strain */
+    font-family: Arial, sans-serif; /* Modern sans-serif font for a cleaner look */
+    line-height: 1.6; /* Improve readability */
+    padding: 20px; /* Add padding for better layout */
+}
+
+/* Style the comment box */
+.comment-box, .reply-box {
+    background-color: #1e1e1e; /* Slightly lighter black for comment boxes */
+    padding: 15px; /* Increase padding for more space */
+    border-radius: 8px; /* Softer rounded corners */
+    margin-bottom: 20px;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+}
+
+/* Customize the like and dislike buttons */
+.btn-like i, .btn-dislike i {
+    color: #ff4d4d; /* Slightly more intense color for like/dislike */
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-like:hover i, .btn-dislike:hover i {
+    color: #ff3333; /* Lighter red on hover */
+}
+
+/* Link Button styling */
+.btn-link {
+    color: #a0a0a0; /* Softer color for reply link */
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-link:hover {
+    color: #ffffff; /* Highlight on hover */
+}
+
+/* Reply box styles */
+.reply-box {
+    margin-left: 30px; /* Increase indent for clearer hierarchy */
+    border-left: 3px solid #444444; /* Add subtle left border to distinguish replies */
+    padding-left: 10px;
+}
+
+/* Buttons */
+button.btn {
+    background-color: #333333; /* Dark background for buttons */
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #555555;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #555555; /* Slightly lighter background on hover */
+    transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #fdfdfd;
+    margin-bottom: 20px; /* Add margin below videos */
+    border-radius: 10px; /* Rounded corners for video container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Text Input Styling */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #444444;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #ff6666; /* Highlight border on focus */
+    outline: none;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Adjust padding on smaller screens */
+    }
+
+    .reply-box {
+        margin-left: 20px; /* Reduce indent on smaller screens */
+    }
+}

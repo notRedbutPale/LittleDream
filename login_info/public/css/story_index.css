@@ -1,0 +1,54 @@
+body {
+    background-color: rgb(74, 138, 121);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.custom-title {
+    color: rgb(0, 0, 0); /* Replace with desired color */
+}
+
+.custom-paragraph {
+    color: rgb(0, 0, 0); /* Replace with desired color */
+}
+
+.container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Example color with some transparency */
+    padding: 20px; /* Optional: add some padding for better spacing */
+    border-radius: 10px; /* Optional: add rounded corners */
+}
+.card {
+    background-color: #b3b0ab;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    color: #3a0202;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card-title {
+    font-size: 1.2rem;
+    color: #faf7f7;
+}
+.btn-primary {
+    background-color: #db43c2;
+    border-color: #1a020218;
+}
+.btn-primary:hover {
+    background-color: #aa1f1f;
+    border-color: #ee5a46;
+}
+
+.custom-title {
+    color: yourColor; /* Replace with desired color */
+    font-weight: bold;
+}
+
+.list-group-item {
+    transition: background-color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #f0f8ff; /* Light background on hover */
+}

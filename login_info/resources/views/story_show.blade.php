@@ -3,47 +3,48 @@
 @section('title', 'Story Details')
 
 @section('content')
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/story_index.css') }}">
+    </head>
     <div class="container">
         <div class="story-detail">
             <h1 class="text-center mb-4">{{ $story->title }}</h1>
             <div class="story-content">
-                <p>{{ $story->content }}</p>
+                <p id="story-content">{{ $story->content }}</p>
+                <a href="{{ route('story') }}"><button class="btn btn-primary mt-3">More Stories</button></a>
+
+                {{-- Add YouTube video --}}
+                @if($story->youtube_video_url)
+                    <div class="youtube-video mt-4">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $story->youtube_video_url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 @endsection
 
+@push('scripts')
+    <script>
+        document.getElementById('generate-speech').addEventListener('click', function() {
+            fetch('{{ route('story.speech', ['id' => $story->id]) }}')
+                .then(response => response.blob())
+                .then(blob => {
+                    const audioUrl = URL.createObjectURL(blob);
+                    const audioPlayer = document.getElementById('audio-player');
+                    audioPlayer.src = audioUrl;
+                    audioPlayer.style.display = 'block'; // Show the audio player
+                    audioPlayer.play();
+                })
+                .catch(error => {
+                    console.error('Error generating speech:', error);
+                });
+        });
+    </script>
+@endpush
+
 @push('styles')
     <style>
-        body {
-            background-image: url('C:\Users\sarwa\Downloads\hand-drawn-world-book-day-background_23-2149309214.avif'); /* URL to your background image */
-            background-size: cover; /* Scale the image to cover the whole page */
-            background-position: center; /* Center the image */
-            background-repeat: no-repeat; /* Prevent repeating the image */
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: #333;
-        }
-        .container {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #fff; /* White background for content area */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .story-detail {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #fff5e6; /* Soft background color for the story area */
-        }
-        h1 {
-            color: #ff6347; /* Bright color for headings */
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #555; /* Slightly darker color for text */
-        }
+        /* Your existing styles */
     </style>
 @endpush

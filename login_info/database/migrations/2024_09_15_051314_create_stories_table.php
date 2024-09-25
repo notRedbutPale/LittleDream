@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Add this line for the story title
-            $table->text('content'); // Add this line for the story content
+            $table->string('title'); // Story title
+            $table->text('content'); // Story content
+            $table->string('youtube_video_url')->nullable(); // YouTube video URL
             $table->timestamps();
         });
     }
@@ -24,6 +25,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stories');
+        Schema::table('stories', function (Blueprint $table) {
+            $table->dropColumn('youtube_video_url'); // Remove the YouTube video URL column
+        });
+
+        Schema::dropIfExists('stories'); // Drop the stories table
     }
 };

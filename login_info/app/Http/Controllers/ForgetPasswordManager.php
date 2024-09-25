@@ -20,28 +20,39 @@ class ForgetPasswordManager extends Controller
     public function forgetPasswordPost(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:users',
+            'email' => 'required|email',
         ]);
+
+        $email = $request->email;
+
+        // Check if the email exists in the database
+        $userExists = User::where('email', $email)->exists();
+
+        if (!$userExists) {
+            return back()->withErrors(['email' => 'Email is not registered. Please register.']);
+        }
 
         $token = Str::random(64);
 
-        $existingToken = DB::table('password_reset_tokens')->where('email', $request->email)->first();
+        // Update or Insert the token into the database
+        $existingToken = DB::table('password_reset_tokens')->where('email', $email)->first();
 
         if ($existingToken) {
-            DB::table('password_reset_tokens')->where('email', $request->email)->update([
+            DB::table('password_reset_tokens')->where('email', $email)->update([
                 'token' => $token,
                 'created_at' => Carbon::now(),
             ]);
         } else {
             DB::table('password_reset_tokens')->insert([
-                'email' => $request->email,
+                'email' => $email,
                 'token' => $token,
                 'created_at' => Carbon::now(),
             ]);
         }
 
-        Mail::send('emails.forget-password', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email);
+        // Send the email with the reset link
+        Mail::send('emails.forget-password', ['token' => $token], function ($message) use ($email) {
+            $message->to($email);
             $message->subject('Reset Password Notification');
         });
 
@@ -57,10 +68,18 @@ class ForgetPasswordManager extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users,email',
-            'password' => 'required|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                'min:5', // Minimum 5 characters
+                'regex:/[!@#$%^&*(),.?":{}|<>]/' // At least one special character
+            ],
             'token' => 'required',
+        ], [
+            // Custom error messages
+            'password.min' => 'The password must be at least 5 characters long.',
+            'password.regex' => 'The password must contain at least one special character.',
         ]);
-
         $record = DB::table('password_reset_tokens')->where('token', $request->token)->first();
 
         if (!$record || $record->email !== $request->email || Carbon::parse($record->created_at)->addHours(2)->isPast()) {

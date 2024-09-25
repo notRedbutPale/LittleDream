@@ -10,8 +10,12 @@
                     <div class="card shadow-lg">
                         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                             <h3 class="mb-0">User Information</h3>
-                            <!-- Story button added here -->
-                            <a href="{{ route('story') }}" class="btn btn-light btn-sm">Story</a>
+                            <!-- Story and Quiz buttons added here -->
+                            <div>
+                                <a href="{{ route('story') }}" class="btn btn-light btn-sm">Story</a>
+                                <a href="{{ route('categories') }}" class="btn btn-light btn-sm">Quiz</a>
+                                <a href="{{ route('logout') }}" class="btn btn-light btn-sm ml-2">Logout</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="text-center mb-4">
@@ -82,6 +86,9 @@
         }
         .text-muted {
             color: #6c757d;
+        }
+        .card-header .btn-light {
+            margin-left: 10px;
         }
     </style>
 @endpush
