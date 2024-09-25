@@ -4,7 +4,7 @@
 
 @section('content')
     @auth
-        <p>Welcome, {{ auth()->user()->name }}!</p>
+        <p>Welcome, <a href="{{ route('logpage') }}">{{ auth()->user()->name }}</a>!</p>
     @else
         <p>You are not logged in.</p>
     @endauth
